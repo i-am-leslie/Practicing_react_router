@@ -22,7 +22,11 @@ header{
     justify-content: flex-end; /* aligns items to the right */
     align-items: center; /* aligns items vertically */
     float: right;
-    padding-right: 100px;
+    padding-right: 40px;
+    background-color:black; 
+    cursor: pointer;
+    padding: 15px 32px;
+    border-radius: 10px;
     
     
   }
@@ -31,8 +35,13 @@ header{
     justify-content: flex-end; /* aligns items to the right */
     align-items: center; /* aligns items vertically */
     float: right;
-    padding-right: 100px;
+    padding-right: 40px;
+    cursor: pointer;
+    background-color:black; 
+    padding: 15px 32px;
+    border-radius: 10px;
   }
+  
   h2{
     padding-top: 120px;
   }
@@ -60,7 +69,10 @@ header{
   }
   
   .form{/* styling the whole form*/
-   padding-top: 30px;
+   padding-top: 5px;
+   padding-right: 200px;
+   padding-left: 200px;
+   
 
    
   }

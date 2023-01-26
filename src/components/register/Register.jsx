@@ -1,28 +1,63 @@
-import React from 'react'
-import './register.css'
-import  {useRef,useState,useEffect} from "react"
-const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])(?=.*[a-z]).{8,}$/;
+import React, { useState } from 'react';
+import './register.css';
 
-// Regular expression for username validation
-const usernameRegex = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
-const Register = () => {
- const userRef=useRef();
- const errrRef=useRef();
+let dummyUsers = [
+  {username: 'admin', email: 'admin@example.com', password: 'password'},
+  {username: 'user', email: 'user@example.com', password: 'password'},
+];
 
- const[user, setUser]=useState('');
- const[ValidName, setValidName]=useState(false);
- const[userFocus, setUserFocus]=useState(false);
+function Register() {
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
 
- const[pwd, setpwd]=useState('');
- const[ValidPwd, setValidPwd]=useState(false);
- const[pwdFocus, setUserPwd]=useState(false);
+  const [error, setError] = useState('');
 
- const[matchPwd, setMatchPwd]=useState('');
- const[ValidMatch, setValidMatch]=useState(false);
- const[matchFocus, setMatchFocus]=useState(false);
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // check if email already exists
+    if (dummyUsers.find((user) => user.email === formData.email)) {
+      setError('Email already exists');
+    } else {
+      // add new user
+      dummyUsers = [...dummyUsers, formData];
+      console.log('User registered successfully');
+    }
+  }
+
   return (
-    <div>Register</div>
-  )
+
+    <div className="register-container">
+      <form className='form' onSubmit={handleSubmit}>
+        <label className='user' >
+          Username:
+          <input type="text" name="username" onChange={handleChange} value={formData.username} />
+        </label>
+        <br />
+        <label className='Email'>
+          Email:
+          <input type="email" name="email" onChange={handleChange} value={formData.email} />
+        </label>
+        <br />
+        <label className='password'>
+          Password:
+          <input type="password" name="password" onChange={handleChange} value={formData.password} />
+        </label>
+        <br />
+        <small className='register' type="submit">Register</small>
+        {error && <p className="error">{error}</p>}
+      </form>
+    </div>
+  );
 }
 
-export default Register
+export default Register;

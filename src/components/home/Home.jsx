@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './home.css'
 import { Link } from 'react-router-dom'
 import { SiAutodesk } from 'react-icons/si'
-import { AiFillMessage } from 'react-icons/ai'
+
 
 
 const canadianPhoneNumberRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
